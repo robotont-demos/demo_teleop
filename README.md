@@ -11,7 +11,7 @@ roslaunch demo_teleop teleop_keyboard.launch
 ## Teleoperating robotont from a gamepad.
 
 ```bash
-roslaunch demo_teleop teleop_keyboard.launch
+roslaunch demo_teleop teleop_joy.launch
 ```
 
 See the `ipega.congig.yaml` file in the `config` directory to edit the speed limits as well as mapping of the controller's axes/buttons.
