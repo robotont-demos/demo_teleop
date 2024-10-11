@@ -1,7 +1,16 @@
-<?xml version="1.0" ?>
-<launch>
-  <node pkg="teleop_twist_keyboard" name="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen">
-    <param name='~speed' value="0.2" />
-    <param name='~turn' value="0.5" />
-  </node>
-</launch>
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='teleop_twist_keyboard',
+            executable='teleop_twist_keyboard',
+            name='teleop_twist_keyboard',
+            output='screen',
+            parameters=[{
+                'speed': 0.2,
+                'turn': 0.5
+            }]
+        )
+    ])
