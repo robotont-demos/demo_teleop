@@ -12,6 +12,8 @@ def generate_launch_description():
                 'speed': 0.2,
                 'turn': 0.5
             }],
-            prefix='screen -dmS teleop_twist_keyboard bash -c'
+            prefix='screen -dmS teleop_twist_keyboard'
         )
     ])
+    
+

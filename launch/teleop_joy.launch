@@ -27,21 +27,16 @@ def generate_launch_description():
             package='joy',
             executable='joy_node',
             name='joy_node',
-            //output='screen',
             parameters=[{
                 'dev': joy_dev,
                 'deadzone': 0.05,
-                'autorepeat_rate': 20
-            }],
-            //prefix='screen -dmS teleop_twist_joy bash -c'
+                'autorepeat_rate': 20.0
+            }]
         ),
         Node(
             package='teleop_twist_joy',
             executable='teleop_node',
-            namespace='teleop_twist_joy2',
-            name='joy',
-            output='screen',
-            parameters=[config],
-            prefix='screen -dmS teleop_twist_joy bash -c'
+            name='teleop_twist_joy',
+            parameters=[config]
         )
     ])
