@@ -13,13 +13,13 @@ sudo apt-get install screen
 ros2 launch demo_teleop teleop_keyboard.launch
 screen -r teleop_twist_keyboard
 ```
+NB! Screen session opens even though it seems like the node is killed. You need to kill the screen session manually.
    
 
 ## Teleoperating robotont from a gamepad.
 
 ```bash
 ros2 launch demo_teleop teleop_joy.launch
-screen -r teleop_twist_joy
 ```
 
 The screen sesssion and node will be both killed if you do CTRL+C in screen session. See the `ipega.congig.yaml` file in the `config` directory to edit the speed limits as well as mapping of the controller's axes/buttons.
