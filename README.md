@@ -22,7 +22,7 @@ ros2 launch demo_teleop teleop_joy.launch
 screen -r teleop_twist_joy
 ```
 
-See the `ipega.congig.yaml` file in the `config` directory to edit the speed limits as well as mapping of the controller's axes/buttons.
+The screen sesssion and node will be both killed if you do CTRL+C in screen session. See the `ipega.congig.yaml` file in the `config` directory to edit the speed limits as well as mapping of the controller's axes/buttons.
 
 ### Parameters
 
