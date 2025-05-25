@@ -1,40 +1,69 @@
 # demo_teleop
-ROS package for teleoperating robotont from a keyboard or a gamepad.
 
-## Installation
-You need to use screen in order to run teleop_twist_keyboard by launch file in non-interactive environment. 
+![ROS 2](https://img.shields.io/badge/ROS2%20-Jazzy-blue.svg) ![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)
+
+## **Overview**
+Teleoperation demo for Robotont (ROS 2).
+## **Table of Contents**
+- [Installation](#installation)
+- [Dependencies](#dependencies)
+- [Building the Package](#building-the-package)
+- [Launch Files](#launch-files)
+- [License](#license)
+
+---
+
+## **Installation**
+
+### **1. Clone the Repository**
 ```bash
-sudo apt-get install screen
+cd ~/<YOUR_WORKSPACE_NAME_HERE>/src
+git clone https://github.com/robotont-demos/demo_teleop.git
 ```
 
-## Teleoperating robotont from a keyboard
-
+## **Dependencies**
+### **1. List of dependencies**
+1.1. joy
+### **2. Install dependencies**
 ```bash
-ros2 launch demo_teleop teleop_keyboard.launch
-screen -r teleop_twist_keyboard
-```
-Screen session opens even though it seems like the node is killed. You need to kill the screen session manually. The screen sesssion and node will be both killed if you do CTRL+C in screen session.
-
-## Teleoperating robotont from a gamepad.
-
-```bash
-ros2 launch demo_teleop teleop_joy.launch
-```
-See the `ipega.congig.yaml` file in the `config` directory to edit the speed limits as well as mapping of the controller's axes/buttons.
-
-### Parameters
-
-`~joy_dev` (string, default: /dev/input/js0) - Path to the joystick device.
-
-`~joy_config` (string, default: ipega) - Name of the joystick configuration file.
-
-`~config_filepath` (string, default: config/ipega.config.yaml) Path to the joystick configuration file.
-
-For example to use the xbox controller and the second joystick device:
-
-```bash
-roslaunch demo_teleop teleop_gamepad.launch joy_dev:=/dev/input/js1 joy_config:=xbox
+cd ~/<YOUR_WORKSPACE_NAME_HERE>
+rosdep install --from-paths src --ignore-src -r -y
 ```
 
-## For more information
-See robotont tutorials at [robotont.github.io](https://robotont.github.io/humble/teleop.html)
+## **Building the package**
+```bash
+cd ~/<YOUR_WORKSPACE_NAME_HERE>
+colcon build --packages-select demo_teleop
+```
+
+## **Launch files**
+### **1. Source workspace**
+```bash
+source ~/<YOUR_WORKSPACE_NAME_HERE>/install/setup.bash
+```
+## 2. Available Launch Files
+
+### 2.1. `gamepad_navigation.launch.py`
+Launches joystick teleoperation (e.g., for controlling the robot with a gamepad).
+
+### Supported Parameters
+
+| Name           | Description                                                      | Options/Default                                                                                                       |
+|----------------|------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| `use_sim_time` | Use simulation time (Gazebo/Sim)                                 | `true` (default), `false`                                                                                            |
+| `params_file`  | Path to parameter YAML file for navigation nodes                 | `nav2_params.yaml` (default)                                                                                         |
+| `gamepad_conf` | Gamepad configuration YAML (for teleop)                          | `dualsense.yaml` (default)                                                                                           |
+
+---
+
+**Example: Launch with Dualsense (default) gamepad configuration**
+```bash
+ros2 launch demo_teleop gamepad_navigation.launch.py
+```
+
+**Example: Launch with custom gamepad configuration**
+```bash
+ros2 launch demo_teleop gamepad_navigation.launch.py gamepad_conf:=path_to_your_conf_file.yaml
+```
+## **License**
+This project is licensed under the Apache 2.0 license - see the [LICENSE](LICENSE) file for more information.

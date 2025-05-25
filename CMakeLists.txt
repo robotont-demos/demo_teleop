@@ -1,16 +1,12 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.16)
 project(demo_teleop)
 
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY launch
+  DIRECTORY config launch
   DESTINATION share/${PROJECT_NAME}
-)
-
-install(
-  DIRECTORY config
-  DESTINATION share/${PROJECT_NAME}
+  FILES_MATCHING PATTERN "*.yaml" PATTERN "*.py" PATTERN "*.xml"
 )
 
 ament_package()
