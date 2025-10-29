@@ -6,7 +6,7 @@ from ament_index_python.packages import get_package_share_directory
 from launch.substitutions import PathJoinSubstitution
 
 def generate_launch_description():
-    gamepad_conf_decl = DeclareLaunchArgument('gamepad_conf', default_value='dualsense.yaml')
+    gamepad_conf_decl = DeclareLaunchArgument('gamepad_conf', default_value='ipega.yaml')
 
     config = PathJoinSubstitution([
         get_package_share_directory('demo_teleop'),
